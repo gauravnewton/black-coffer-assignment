@@ -1,0 +1,19 @@
+.brand-logo {
+	width: 20%;
+}
+
+body {
+	background: #dddde0;
+}
+
+.filter-round-border {
+    border-radius: 15px !important;
+}
+
+.action-not-allowed {
+	pointer-events: none;
+}
+
+.action-not-allowed-fade {
+	opacity: 0.5;
+}
