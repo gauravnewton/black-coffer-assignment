@@ -14,6 +14,11 @@ import comblackcoffer.dto.BlackCofferData;
 import comblackcoffer.dto.ChartFilteredResponseData;
 import comblackcoffer.dto.FilterRequest;
 
+/**
+ * The Class BlackCofferDAO.
+ *
+ * @author GAURAV 2023-04-11 9:32:30 AM
+ */
 @Repository
 public class BlackCofferDAO {
 
@@ -21,9 +26,15 @@ public class BlackCofferDAO {
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate; 
 
+	/** The logger. */
 	Logger logger = Logger.getLogger(BlackCofferDAO.class.getName());
 	
 	
+	/**
+	 * Gets the meta data for country filter.
+	 *
+	 * @return the meta data for country filter
+	 */
 	public List<String> getMetaDataForCountryFilter() {
 		return namedParameterJdbcTemplate.query(
                 "SELECT distinct(country) FROM data order by country",
@@ -32,6 +43,11 @@ public class BlackCofferDAO {
         );
 	}
 	
+	/**
+	 * Gets the meta data for SWOT filter.
+	 *
+	 * @return the meta data for SWOT filter
+	 */
 	public List<String> getMetaDataForSWOTFilter() {
 		return namedParameterJdbcTemplate.query(
                 "SELECT distinct(swot) FROM data order by swot",
@@ -40,6 +56,12 @@ public class BlackCofferDAO {
         );
 	}
 	
+	/**
+	 * Apply chart filters.
+	 *
+	 * @param filters the filters
+	 * @return the list
+	 */
 	public List<ChartFilteredResponseData> applyChartFilters (FilterRequest filters) {
 		return namedParameterJdbcTemplate.query(
         		prepareChartFilterQuery(filters),
@@ -51,6 +73,12 @@ public class BlackCofferDAO {
         );
 	}
 
+	/**
+	 * Prepare chart filter query.
+	 *
+	 * @param filters the filters
+	 * @return the string
+	 */
 	private String prepareChartFilterQuery(FilterRequest filters) {
 		StringBuffer sb = new StringBuffer("SELECT " + filters.getChartRepresentationField() + 
 				" AS filteresParam, count("+ filters.getChartRepresentationField() +") AS count FROM DATA WHERE 1");
@@ -104,6 +132,12 @@ public class BlackCofferDAO {
 		return query;
 	}
 
+	/**
+	 * Apply data table filters.
+	 *
+	 * @param filters the filters
+	 * @return the list
+	 */
 	public List<BlackCofferData> applyDataTableFilters(FilterRequest filters) {
         return namedParameterJdbcTemplate.query(
         		prepareDataTableFilterQuery(filters),
@@ -135,6 +169,11 @@ public class BlackCofferDAO {
         );
 	}
 	
+	/**
+	 * Gets the default dashboard.
+	 *
+	 * @return the default dashboard
+	 */
 	public List<BlackCofferData> getDefaultDashboard() {
         return namedParameterJdbcTemplate.query(
                 "select * from data",
@@ -166,6 +205,12 @@ public class BlackCofferDAO {
         );
 	}
 
+	/**
+	 * Prepare data table filter query.
+	 *
+	 * @param filters the filters
+	 * @return the string
+	 */
 	private String prepareDataTableFilterQuery(FilterRequest filters) {
 		StringBuffer sb = new StringBuffer("SELECT * FROM DATA WHERE 1");
 		

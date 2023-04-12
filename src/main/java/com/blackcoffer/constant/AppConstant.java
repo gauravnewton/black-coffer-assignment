@@ -2,6 +2,8 @@ package com.blackcoffer.constant;
 
 /**
  * The Class AppConstant.
+ *
+ * @author GAURAV 2023-04-10 2:32:39 AM
  */
 public class AppConstant {
 	

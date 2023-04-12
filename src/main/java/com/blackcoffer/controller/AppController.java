@@ -27,6 +27,8 @@ import comblackcoffer.dto.FilterRequest;
 
 /**
  * The Class AppController.
+ *
+ * @author GAURAV 2023-04-10 6:32:30 AM
  */
 @Controller
 @RequestMapping(value = "/app")
@@ -50,6 +52,12 @@ public class AppController {
 	} 
 
 
+	/**
+	 * Gets the default dashboard.
+	 *
+	 * @param request the request
+	 * @return the default dashboard
+	 */
 	@RequestMapping(value = "/getDefaultDashboard", produces = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> getDefaultDashboard(HttpServletRequest request) {
 		Map<String, Object> response = new HashMap<>();
@@ -69,6 +77,13 @@ public class AppController {
 	}
 	
 	
+	/**
+	 * Apply data table filters.
+	 *
+	 * @param filters the filters
+	 * @param request the request
+	 * @return the map
+	 */
 	@RequestMapping(value = "/applyDataTableFilters", produces = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> applyDataTableFilters(@RequestBody FilterRequest filters, HttpServletRequest request) {
 		Map<String, Object> response = new HashMap<>();
@@ -87,6 +102,13 @@ public class AppController {
 		return response;
 	}
 	
+	/**
+	 * Apply chart filters.
+	 *
+	 * @param filters the filters
+	 * @param request the request
+	 * @return the map
+	 */
 	@RequestMapping(value = "/applyChartFilters", produces = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> applyChartFilters(@RequestBody FilterRequest filters, HttpServletRequest request) {
 		Map<String, Object> response = new HashMap<>();
@@ -106,6 +128,12 @@ public class AppController {
 	}
 	
 	
+	/**
+	 * Gets the meta data for SWOT filter.
+	 *
+	 * @param request the request
+	 * @return the meta data for SWOT filter
+	 */
 	@RequestMapping(value = "/getMetaDataForSWOTFilter", produces = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> getMetaDataForSWOTFilter(HttpServletRequest request) {
 		Map<String, Object> response = new HashMap<>();
@@ -125,6 +153,12 @@ public class AppController {
 	}
 	
 	
+	/**
+	 * Gets the meta data for country filter.
+	 *
+	 * @param request the request
+	 * @return the meta data for country filter
+	 */
 	@RequestMapping(value = "/getMetaDataForCountryFilter", produces = { MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
 	public @ResponseBody Map<String, Object> getMetaDataForCountryFilter(HttpServletRequest request) {
 		Map<String, Object> response = new HashMap<>();
